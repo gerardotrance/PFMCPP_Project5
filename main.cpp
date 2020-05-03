@@ -53,11 +53,32 @@ Purpose:  This project continues developing Project3 and will take you through h
 /*
  new UDT 4:
  */
+struct AudioInterface
+{
+    int inputs = 2;
+    int outputs = 2;
+    int processors = 1;
 
+    void recieveAudio();
+    void processAudio();
+    void outputAudio();
+    AudioInterface();
+};
 /*
  new UDT 5:
  */
+struct DjMixer
+{
+    int channels = 2;
+    int volumeOne = 0;
+    int volumeTwo = 0;
 
+    void outputMusic();
+    void increaseVTwo();
+    void increaseVOne();
+    void switchChannel();
+    DjMixer();
+};
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
