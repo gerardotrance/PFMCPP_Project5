@@ -37,48 +37,163 @@ Purpose:  This project continues developing Project3 and will take you through h
  7) After you finish, click the [run] button.  Clear up any errors or warnings as best you can.
  
  */
-
+#include<iostream>
 /*
  copied UDT 1:
  */
+struct DjMixer
+{
+    float channelselected;
+    int volumeOne;
+    int volumeTwo;
 
+    void outputMusic();
+    void increaseVTwo();
+    void increaseVOne();
+    void switchChannelRight();
+    DjMixer();
+    ~DjMixer()
+    {
+        std::cout << "DjMixer Destructor." << std::endl;
+    }
+};
+
+DjMixer::DjMixer():channelselected(1.5f){}
+
+void DjMixer::switchChannelRight()
+{
+    while(channelselected <= 2.0f)
+    {
+        ++ channelselected;
+        if(channelselected == 2.0f)
+        {
+            std::cout << "Right Channel" << std::endl;
+        }
+    }
+}
 /*
  copied UDT 2:
  */
+struct Synth
+{
+    int oscillators;
+    bool reverb;
+    int reverbSync;
+    int syncBPM;
+    bool delay;
 
+    void reverbTime();
+    void selectDelay();
+    void selectBPM();
+    Synth();
+    ~Synth()
+    {
+        std::cout << "Synth Destructor" << std::endl; 
+    }
+
+};
+
+Synth::Synth(): reverbSync(60), syncBPM(120){}
+
+void Synth::reverbTime()
+{
+    while(reverbSync < syncBPM)
+    {
+        ++ reverbSync;
+    }
+    while(reverbSync > syncBPM)
+    {
+        -- reverbSync;
+    }
+    if(reverbSync == syncBPM)
+    {
+        return;
+    }
+}
 /*
  copied UDT 3:
  */
+struct Sampler
+{
+    bool playButton;
+    bool stopButton;
+    std::string sample;
+    int BPM;
+    int startPoint;
 
+    void playSample();
+    void stopSample();
+
+    Sampler();
+    ~Sampler()
+    {
+        std::cout << "Sampler Destructor" << std::endl;
+    }
+};
+
+Sampler::Sampler(): sample(" disco sample"), BPM(120), startPoint(){}
+
+void Sampler::playSample()
+{
+    while(startPoint < BPM)
+    {
+    std::cout << sample << " is playing." << std::endl;
+    ++ startPoint;
+    }
+}
 /*
  new UDT 4:
  */
 struct AudioInterface
 {
-    int inputs = 2;
-    int outputs = 2;
-    int processors = 1;
+    Synth myKorg;
+    DjMixer myPioneer;
+    DjMixer modelone;
+    Sampler myRex;
+    
+    void inputSound();
+    void outputSound();
 
-    void recieveAudio();
-    void processAudio();
-    void outputAudio();
     AudioInterface();
+    ~AudioInterface()
+    {
+        std::cout << "AudioInterface Destructor" << std::endl;
+    }
 };
+
+void AudioInterface::outputSound()
+{
+    AudioInterface nativeInstruments;
+    myKorg.oscillators = 4;
+    modelone.channelselected = 1.0f;
+}
 /*
  new UDT 5:
  */
-struct DjMixer
+struct AudioWorkstation
 {
-    int channels = 2;
-    int volumeOne = 0;
-    int volumeTwo = 0;
+    Synth myNovation;
+    Synth software;
+    DjMixer myPioneer;
+    Sampler myRex;
+    
+    void recordAudio();
 
-    void outputMusic();
-    void increaseVTwo();
-    void increaseVOne();
-    void switchChannel();
-    DjMixer();
+    AudioWorkstation();
+    ~AudioWorkstation()
+    {
+        std::cout << "AudioWorkstation Destructor" << std::endl;
+    }
+    
+    
 };
+
+void AudioWorkstation::recordAudio()
+{
+    AudioWorkstation cubase;
+    myNovation.oscillators = 1;
+    software.oscillators = 8;
+}
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
