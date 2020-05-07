@@ -150,6 +150,8 @@ struct AudioInterface
     DjMixer myPioneer;
     DjMixer modelone;
     Sampler myRex;
+    Synth nativeInstruments;
+
     
     void inputSound();
     void outputSound();
@@ -163,9 +165,9 @@ struct AudioInterface
 
 void AudioInterface::outputSound()
 {
-    AudioInterface nativeInstruments;
     myKorg.oscillators = 4;
     modelone.channelselected = 1.0f;
+    nativeInstruments.reverb = false;
 }
 /*
  new UDT 5:
@@ -176,6 +178,7 @@ struct AudioWorkstation
     Synth software;
     DjMixer myPioneer;
     Sampler myRex;
+    Sampler cubase;
     
     void recordAudio();
 
@@ -190,9 +193,9 @@ struct AudioWorkstation
 
 void AudioWorkstation::recordAudio()
 {
-    AudioWorkstation cubase;
     myNovation.oscillators = 1;
     software.oscillators = 8;
+    cubase.sample = " blues sample";
 }
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
