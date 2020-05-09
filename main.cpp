@@ -48,9 +48,9 @@ struct DjMixer
     int volumeTwo;
 
     void outputMusic();
-    void increaseVTwo();
-    void increaseVOne();
-    void switchChannelRight();
+    int increaseVTwo();
+    int increaseVOne();
+    float switchChannelRight();
     DjMixer();
     ~DjMixer()
     {
@@ -58,18 +58,41 @@ struct DjMixer
     }
 };
 
-DjMixer::DjMixer():channelselected(1.5f){}
+DjMixer::DjMixer() : channelselected(1.5f), volumeOne(0), volumeTwo(0) {}
 
-void DjMixer::switchChannelRight()
+float DjMixer::switchChannelRight()
 {
-    while(channelselected <= 2.0f)
+    while(channelselected < 2.0f)
     {
         ++ channelselected;
-        if(channelselected == 2.0f)
-        {
-            std::cout << "Right Channel" << std::endl;
-        }
+    }    
+    
+    return channelselected;
+}
+
+void DjMixer::outputMusic()
+{
+    std::cout << "Music Playing" << std::endl;
+}
+
+int DjMixer::increaseVTwo()
+{
+    while(volumeTwo < 12)
+    {
+        ++ volumeTwo;
     }
+
+    return volumeTwo;
+}
+
+int DjMixer::increaseVOne()
+{
+    while(volumeOne < 12)
+    {
+        ++ volumeOne;
+    }
+
+    return volumeOne;
 }
 /*
  copied UDT 2:
@@ -84,7 +107,7 @@ struct Synth
 
     void reverbTime();
     void selectDelay();
-    void selectBPM();
+    int selectBPM();
     Synth();
     ~Synth()
     {
@@ -101,14 +124,39 @@ void Synth::reverbTime()
     {
         ++ reverbSync;
     }
+    
     while(reverbSync > syncBPM)
     {
         -- reverbSync;
     }
+    
     if(reverbSync == syncBPM)
     {
         return;
     }
+}
+
+void Synth::selectDelay()
+{
+    if(delay == true)
+    {
+        std::cout << "delay on" << std::endl;
+    }
+
+    else
+    {
+        std::cout << "delay off" << std::endl;
+    }
+}
+
+int Synth::selectBPM()
+{
+    while(syncBPM < 175)
+    {
+        ++ syncBPM;
+    }
+
+    return syncBPM;
 }
 /*
  copied UDT 3:
@@ -137,10 +185,18 @@ void Sampler::playSample()
 {
     while(startPoint < BPM)
     {
-    std::cout << sample << " is playing." << std::endl;
-    ++ startPoint;
+        std::cout << sample << " is playing." << std::endl;
+        ++ startPoint;
     }
 }
+ void Sampler::stopSample()
+ {
+     while(BPM > 0)
+     {
+       -- BPM;
+       std::cout << "sample stopped" << std::endl;
+     }
+ }
 /*
  new UDT 4:
  */
@@ -169,6 +225,11 @@ void AudioInterface::outputSound()
     modelone.channelselected = 1.0f;
     nativeInstruments.reverb = false;
 }
+
+void AudioInterface::inputSound()
+{
+    std::cout << " Device found" << std::endl;
+}
 /*
  new UDT 5:
  */
@@ -193,9 +254,8 @@ struct AudioWorkstation
 
 void AudioWorkstation::recordAudio()
 {
-    myNovation.oscillators = 1;
-    software.oscillators = 8;
     cubase.sample = " blues sample";
+    std::cout << cubase.sample << std::endl;
 }
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
@@ -214,5 +274,28 @@ void AudioWorkstation::recordAudio()
 #include <iostream>
 int main()
 {
-    std::cout << "good to go!" << std::endl;
+        DjMixer initial;
+
+        std::cout << initial.volumeOne << " is volume one and " << initial.volumeTwo << " is volume two" << std::endl;
+
+        DjMixer newvalue;
+        newvalue.increaseVTwo();
+        newvalue.increaseVOne();
+
+        std::cout << newvalue.volumeOne << " is the new volume of channel one and " << newvalue.volumeTwo << " is the new volume of channel two" << std::endl;
+
+        Synth access;
+        access.reverbTime();
+        access.selectBPM();
+        std::cout << access.syncBPM << " BPM is the tempo " << std::endl;
+
+        Sampler rex;
+        rex.playSample();
+
+        DjMixer denon;
+        denon.switchChannelRight();
+
+        std::cout << denon.channelselected << " is the channel position" << std::endl;
+
+        std::cout << "good to go!" << std::endl;
 }
