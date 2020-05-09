@@ -41,222 +41,536 @@ Purpose:  This project continues developing Project3 and will take you through h
 /*
  copied UDT 1:
  */
-struct DjMixer
-{
-    float channelselected;
-    int volumeOne;
-    int volumeTwo;
+struct MidiKeyboard
 
-    void outputMusic();
-    int increaseVTwo();
-    int increaseVOne();
-    float switchChannelRight();
-    DjMixer();
-    ~DjMixer()
+{
+
+    int keys, pitch, modWheel;
+
+    bool pitchWheel, keyPressed, grand;
+
+
+
+    void playMidiNotes(bool keyPressed);
+
+    void changePitch(bool pitchWheel);
+
+    void controlMacros(bool modWheel);
+
+    void printKeys();
+
+    int pitchShift();
+
+    MidiKeyboard();
+    ~MidiKeyboard()
     {
-        std::cout << "DjMixer Destructor." << std::endl;
+        std::cout << "MidiKeyboard Destructor" << std::endl;
     }
+
 };
 
-DjMixer::DjMixer() : channelselected(1.5f), volumeOne(0), volumeTwo(0) {}
 
-float DjMixer::switchChannelRight()
+
+MidiKeyboard::MidiKeyboard(): keys(32),pitch(0), modWheel(1),pitchWheel(true), keyPressed(false), grand(false){} 
+
+
+
+int MidiKeyboard::pitchShift()
+
 {
-    while(channelselected < 2.0f)
+
+    while(modWheel == 0 )
+
     {
-        ++ channelselected;
-    }    
+
+        pitch = 0;       
+
+    }
+
+    while(modWheel == 1 )
+
+    {
+
+        ++pitch;
+
+        std::cout << pitch << " tones moved up" << std::endl;
+
+        if(pitch >= 12)
+
+        {
+
+            modWheel = 0;
+
+            std::cout << "pitch shifted up one octave" << std::endl;
+
+        }
+
+    }
+
+    return 0;   
+
+}
+
+
+
+void MidiKeyboard::printKeys()
+
+{
+
+    std::cout << keys << " keys available." << std::endl;
+
+}
+
+
+
+void MidiKeyboard::playMidiNotes(bool press)
+
+{
+
+    keyPressed = press;
+
+
+
+    if(keyPressed == true)
+
+    {
+
+        std::cout << "key pressed" << std::endl;  
+
+    }
+
+    else
+
+    {
+
+        std::cout << "key not pressed" << std::endl;
+
+    } 
+
+}
+
+
+
+void MidiKeyboard::changePitch(bool up)
+
+{
+
+    pitchWheel = up;
+
     
-    return channelselected;
-}
 
-void DjMixer::outputMusic()
-{
-    std::cout << "Music Playing" << std::endl;
-}
+    if(pitchWheel == true)
 
-int DjMixer::increaseVTwo()
-{
-    while(volumeTwo < 12)
     {
-        ++ volumeTwo;
+
+        std::cout << "pitch wheel" << std::endl;
+
     }
 
-    return volumeTwo;
-}
+    else
 
-int DjMixer::increaseVOne()
-{
-    while(volumeOne < 12)
     {
-        ++ volumeOne;
+
+        std::cout << "no pitch wheel" << std::endl;
+
     }
 
-    return volumeOne;
+}
+
+
+
+void MidiKeyboard::controlMacros(bool macro)
+
+{
+
+    modWheel = macro;
+
+
+
+    if(modWheel == true)
+
+    {
+
+        std::cout << "mod wheel" << std::endl;
+
+    }
+
+    else
+
+    {
+
+        std::cout << "no mod wheel" << std::endl;
+
+    }
+
 }
 /*
  copied UDT 2:
  */
-struct Synth
-{
-    int oscillators;
-    bool reverb;
-    int reverbSync;
-    int syncBPM;
-    bool delay;
+struct Laptop
 
-    void reverbTime();
-    void selectDelay();
-    int selectBPM();
-    Synth();
-    ~Synth()
+{
+
+    int screenResolution = 4000;
+
+    bool keyboard = true;
+
+    std::string password = "password";
+
+    int hardDriveAvailableGb = 256;
+
+    int hardDriveUsed = 512 - hardDriveAvailableGb;
+
+    int memoryGb = 8;
+
+    Laptop();
+    ~Laptop()
     {
-        std::cout << "Synth Destructor" << std::endl; 
+        std::cout << "Laptop Destructor" << std::endl;
     }
+
+    
+
+    void receiveInput(bool keyboard, std::string password, int memoryGb);
+
+    float produceOutput(bool screenResolution, int memoryGb);
+
+    float saveData(int hardDriveAvailableGb);
+
+    void hardDriveDetails();
 
 };
 
-Synth::Synth(): reverbSync(60), syncBPM(120){}
 
-void Synth::reverbTime()
+
+Laptop::Laptop()
+
 {
-    while(reverbSync < syncBPM)
-    {
-        ++ reverbSync;
-    }
-    
-    while(reverbSync > syncBPM)
-    {
-        -- reverbSync;
-    }
-    
-    if(reverbSync == syncBPM)
-    {
-        return;
-    }
+
+    screenResolution = 8000;
+
+    keyboard = true;
+
+    password = "new password";
+
+    hardDriveAvailableGb = 256;
+
+    hardDriveUsed = 256;
+
+    memoryGb = 16;    
+
 }
 
-void Synth::selectDelay()
+
+
+void Laptop::hardDriveDetails()
+
 {
-    if(delay == true)
+
+    std::cout << hardDriveAvailableGb << " Giga Bytes HD storage." << std::endl;
+
+    if(hardDriveAvailableGb < 512)
+
     {
-        std::cout << "delay on" << std::endl;
+
+        std::cout << "you have used " << hardDriveUsed << " Giga Bytes of storage space." << std::endl;
+
+    }
+
+    while(hardDriveUsed > 0)
+
+    {
+
+        std::cout << " UPDATE PROCESSING " << hardDriveUsed << " GigaBytes used" << std::endl;
+
+        hardDriveUsed -= 16;
+
+    }
+
+    std::cout << "Hard Disk Ready To Use!" << std::endl;    
+
+}
+
+
+
+void Laptop::receiveInput(bool keyboardInput, std::string user, int RAM)
+
+{
+
+    keyboard = keyboardInput;
+
+    password = user;
+
+    memoryGb = RAM;
+
+
+
+    if(password == "password")
+
+    {
+
+        std::cout << "welcome user" << std::endl;
+
+    }
+
+    if(password != "password")
+
+    {
+
+        std::cout << "incorrect password" << std::endl;
+
     }
 
     else
+
     {
-        std::cout << "delay off" << std::endl;
+
+        std::cout << "enter password" << std::endl;
+
     }
+
 }
 
-int Synth::selectBPM()
-{
-    while(syncBPM < 175)
-    {
-        ++ syncBPM;
-    }
 
-    return syncBPM;
+
+float Laptop::produceOutput(bool graphics, int RAM)
+
+{
+
+    screenResolution = graphics;
+
+    memoryGb = RAM;
+
+
+
+    return(memoryGb);
+
+}
+
+
+
+float Laptop::saveData(int storage)
+
+{ 
+
+    hardDriveAvailableGb = storage;
+
+
+
+    return(hardDriveAvailableGb);
+
 }
 /*
  copied UDT 3:
  */
-struct Sampler
+struct FishTank
+
 {
-    bool playButton;
-    bool stopButton;
-    std::string sample;
-    int BPM;
-    int startPoint;
 
-    void playSample();
-    void stopSample();
+    int waterTempCelcius = 25;
 
-    Sampler();
-    ~Sampler()
+    int heightCm = 30;
+
+    int lengthCm = 90;
+
+    int gallons = 50;
+
+    bool lightOn = true;
+
+    FishTank();
+    ~FishTank()
     {
-        std::cout << "Sampler Destructor" << std::endl;
+        std::cout << "FishTank Destructor" << std::endl;
     }
+
+    
+
+    struct Decor
+
+    {
+
+        bool livePlants = true;
+
+        int numberOfPlants = 6;
+
+        bool corals = false;
+
+        int numberOfCorals = 0;
+
+        bool rocks = true;
+
+        int numberOfRocks = 5;
+
+        
+
+        void cleanDecor();
+
+    };
+
+
+
+    void switchLightOn(bool lightOn);
+
+    void switchHeaterOn();
+
+    void feedFish(int gallons);
+
+    void printTemp();
+
+    int tempAlert();
+
 };
 
-Sampler::Sampler(): sample(" disco sample"), BPM(120), startPoint(){}
 
-void Sampler::playSample()
+
+FishTank::FishTank() : waterTempCelcius(24), gallons(75){}
+
+
+
+int FishTank::tempAlert()
+
 {
-    while(startPoint < BPM)
+
+    while(waterTempCelcius < 30)
+
     {
-        std::cout << sample << " is playing." << std::endl;
-        ++ startPoint;
+
+        std::cout << "temperature too low " << waterTempCelcius << " degrees celcius"  << std::endl;
+
+        waterTempCelcius += 1;
+
     }
+
+    while(waterTempCelcius == 30)
+
+    {
+
+        std::cout << "safe water temperature " << waterTempCelcius << " degrees celcius" << std::endl;
+
+        return 0;
+
+    }
+
+    return waterTempCelcius;
+
 }
- void Sampler::stopSample()
- {
-     while(BPM > 0)
-     {
-       -- BPM;
-       std::cout << "sample stopped" << std::endl;
-     }
- }
+
+void FishTank::printTemp()
+
+{
+
+    std::cout << waterTempCelcius << " is the current temperature in the Aquarium." << std::endl;
+
+}
+
+
+
+void FishTank::switchLightOn(bool lighting)
+
+{
+
+    lightOn = lighting;
+
+
+
+    std::cout << "light is on" << std::endl;
+
+}
+
+
+
+void FishTank::switchHeaterOn()
+
+{
+
+    if(waterTempCelcius > 25)
+
+    {
+
+        std::cout << "Marine Aquarium" << std::endl;
+
+    }
+
+      
+
+    else
+
+    {
+
+        std::cout << "Tropical Aquarium" << std::endl;
+
+    }
+
+}
+
+
+
+void FishTank::feedFish(int aquariumSize)
+
+{
+
+    gallons = aquariumSize;
+
+
+
+    if(gallons <= 50)
+
+    {
+
+        std::cout << "feed fish once a week" << std::endl;  
+
+    }
+
+    if(gallons <= 100 || gallons > 50)
+
+    {
+
+        std::cout << "feed fish twice a week" << std::endl;
+
+    }
+
+    else
+
+    {
+
+        std::cout << "feed fish at least three times a week" << std::endl;
+
+    }        
+
+}
 /*
  new UDT 4:
  */
-struct AudioInterface
+struct MusicStudio
 {
-    Synth myKorg;
-    DjMixer myPioneer;
-    DjMixer modelone;
-    Sampler myRex;
-    Synth nativeInstruments;
-
-    
-    void inputSound();
-    void outputSound();
-
-    AudioInterface();
-    ~AudioInterface()
+    MidiKeyboard studioKeyboard;
+    Laptop studioLaptop;
+    MusicStudio();
+    ~MusicStudio()
     {
-        std::cout << "AudioInterface Destructor" << std::endl;
+        std::cout << "MusicStudio Destructor" << std::endl;
+    }
+
+    void setupStudio()
+    {
+        std::cout << "Studio Ready to Record" << std::endl;
     }
 };
-
-void AudioInterface::outputSound()
-{
-    myKorg.oscillators = 4;
-    modelone.channelselected = 1.0f;
-    nativeInstruments.reverb = false;
-}
-
-void AudioInterface::inputSound()
-{
-    std::cout << " Device found" << std::endl;
-}
 /*
  new UDT 5:
  */
-struct AudioWorkstation
+struct StudioLighting
 {
-    Synth myNovation;
-    Synth software;
-    DjMixer myPioneer;
-    Sampler myRex;
-    Sampler cubase;
-    
-    void recordAudio();
-
-    AudioWorkstation();
-    ~AudioWorkstation()
+    FishTank studioAquarium;
+    StudioLighting();
+    ~StudioLighting()
     {
-        std::cout << "AudioWorkstation Destructor" << std::endl;
+        std::cout << "Studio Lighting Destructor" << std::endl;
     }
-    
+
+    void ambientLighting();
     
 };
-
-void AudioWorkstation::recordAudio()
-{
-    cubase.sample = " blues sample";
-    std::cout << cubase.sample << std::endl;
-}
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -273,29 +587,15 @@ void AudioWorkstation::recordAudio()
 
 #include <iostream>
 int main()
-{
-        DjMixer initial;
+{   
+    MidiKeyboard nord;
+    nord.pitchShift();
 
-        std::cout << initial.volumeOne << " is volume one and " << initial.volumeTwo << " is volume two" << std::endl;
+    Laptop macbook;
+    macbook.hardDriveDetails();
 
-        DjMixer newvalue;
-        newvalue.increaseVTwo();
-        newvalue.increaseVOne();
+    FishTank aquarium;
+    aquarium.tempAlert();
 
-        std::cout << newvalue.volumeOne << " is the new volume of channel one and " << newvalue.volumeTwo << " is the new volume of channel two" << std::endl;
-
-        Synth access;
-        access.reverbTime();
-        access.selectBPM();
-        std::cout << access.syncBPM << " BPM is the tempo " << std::endl;
-
-        Sampler rex;
-        rex.playSample();
-
-        DjMixer denon;
-        denon.switchChannelRight();
-
-        std::cout << denon.channelselected << " is the channel position" << std::endl;
-
-        std::cout << "good to go!" << std::endl;
+    std::cout << "good to go !" << std::endl;
 }
