@@ -44,21 +44,13 @@ Purpose:  This project continues developing Project3 and will take you through h
 struct MidiKeyboard
 
 {
-
     int keys, pitch, modWheel;
-
     bool pitchWheel, keyPressed, grand;
 
-
-
     void playMidiNotes(bool keyPressed);
-
     void changePitch(bool pitchWheel);
-
     void controlMacros(bool modWheel);
-
     void printKeys();
-
     int pitchShift();
 
     MidiKeyboard();
@@ -69,138 +61,79 @@ struct MidiKeyboard
 
 };
 
-
-
 MidiKeyboard::MidiKeyboard(): keys(32),pitch(0), modWheel(1),pitchWheel(true), keyPressed(false), grand(false){} 
-
-
 
 int MidiKeyboard::pitchShift()
 
 {
-
     while(modWheel == 0 )
-
     {
-
         pitch = 0;       
-
     }
 
     while(modWheel == 1 )
-
     {
-
         ++pitch;
-
         std::cout << pitch << " tones moved up" << std::endl;
-
         if(pitch >= 12)
-
         {
-
             modWheel = 0;
-
             std::cout << "pitch shifted up one octave" << std::endl;
-
         }
-
     }
 
     return 0;   
-
 }
-
-
 
 void MidiKeyboard::printKeys()
-
 {
-
     std::cout << keys << " keys available." << std::endl;
-
 }
 
-
-
 void MidiKeyboard::playMidiNotes(bool press)
-
 {
-
     keyPressed = press;
 
-
-
     if(keyPressed == true)
-
     {
-
         std::cout << "key pressed" << std::endl;  
-
     }
 
     else
-
     {
-
         std::cout << "key not pressed" << std::endl;
-
     } 
 
 }
 
-
-
 void MidiKeyboard::changePitch(bool up)
-
 {
-
     pitchWheel = up;
 
-    
-
     if(pitchWheel == true)
-
     {
-
         std::cout << "pitch wheel" << std::endl;
-
     }
-
+    
     else
-
     {
-
         std::cout << "no pitch wheel" << std::endl;
-
     }
 
 }
 
-
-
 void MidiKeyboard::controlMacros(bool macro)
-
 {
-
     modWheel = macro;
 
-
-
     if(modWheel == true)
-
     {
-
         std::cout << "mod wheel" << std::endl;
-
     }
 
     else
-
     {
-
         std::cout << "no mod wheel" << std::endl;
-
     }
 
 }
@@ -210,17 +143,11 @@ void MidiKeyboard::controlMacros(bool macro)
 struct Laptop
 
 {
-
     int screenResolution = 4000;
-
     bool keyboard = true;
-
     std::string password = "password";
-
     int hardDriveAvailableGb = 256;
-
     int hardDriveUsed = 512 - hardDriveAvailableGb;
-
     int memoryGb = 8;
 
     Laptop();
@@ -229,136 +156,79 @@ struct Laptop
         std::cout << "Laptop Destructor" << std::endl;
     }
 
-    
-
     void receiveInput(bool keyboard, std::string password, int memoryGb);
-
     float produceOutput(bool screenResolution, int memoryGb);
-
     float saveData(int hardDriveAvailableGb);
-
     void hardDriveDetails();
 
 };
 
-
-
 Laptop::Laptop()
 
 {
-
     screenResolution = 8000;
-
     keyboard = true;
-
     password = "new password";
-
     hardDriveAvailableGb = 256;
-
     hardDriveUsed = 256;
-
     memoryGb = 16;    
-
 }
 
-
-
 void Laptop::hardDriveDetails()
-
 {
-
     std::cout << hardDriveAvailableGb << " Giga Bytes HD storage." << std::endl;
-
+    
     if(hardDriveAvailableGb < 512)
-
     {
-
         std::cout << "you have used " << hardDriveUsed << " Giga Bytes of storage space." << std::endl;
-
     }
 
     while(hardDriveUsed > 0)
-
     {
-
         std::cout << " UPDATE PROCESSING " << hardDriveUsed << " GigaBytes used" << std::endl;
-
         hardDriveUsed -= 16;
-
     }
 
     std::cout << "Hard Disk Ready To Use!" << std::endl;    
 
 }
 
-
-
 void Laptop::receiveInput(bool keyboardInput, std::string user, int RAM)
-
 {
-
     keyboard = keyboardInput;
-
     password = user;
-
     memoryGb = RAM;
 
-
-
     if(password == "password")
-
     {
-
         std::cout << "welcome user" << std::endl;
-
     }
 
     if(password != "password")
-
     {
-
         std::cout << "incorrect password" << std::endl;
-
     }
 
     else
-
     {
-
         std::cout << "enter password" << std::endl;
-
     }
 
 }
 
-
-
 float Laptop::produceOutput(bool graphics, int RAM)
-
 {
-
     screenResolution = graphics;
-
     memoryGb = RAM;
 
-
-
     return(memoryGb);
-
 }
 
-
-
 float Laptop::saveData(int storage)
-
 { 
-
     hardDriveAvailableGb = storage;
-
-
-
+    
     return(hardDriveAvailableGb);
-
 }
 /*
  copied UDT 3:
@@ -366,15 +236,10 @@ float Laptop::saveData(int storage)
 struct FishTank
 
 {
-
     int waterTempCelcius = 25;
-
     int heightCm = 30;
-
     int lengthCm = 90;
-
     int gallons = 50;
-
     bool lightOn = true;
 
     FishTank();
@@ -383,72 +248,44 @@ struct FishTank
         std::cout << "FishTank Destructor" << std::endl;
     }
 
-    
-
     struct Decor
-
+    
     {
-
         bool livePlants = true;
-
         int numberOfPlants = 6;
-
         bool corals = false;
-
         int numberOfCorals = 0;
-
         bool rocks = true;
-
         int numberOfRocks = 5;
-
         
-
         void cleanDecor();
 
     };
 
-
-
     void switchLightOn(bool lightOn);
-
     void switchHeaterOn();
-
     void feedFish(int gallons);
-
     void printTemp();
-
     int tempAlert();
 
 };
 
-
-
 FishTank::FishTank() : waterTempCelcius(24), gallons(75){}
 
-
-
 int FishTank::tempAlert()
-
 {
-
     while(waterTempCelcius < 30)
-
     {
-
         std::cout << "temperature too low " << waterTempCelcius << " degrees celcius"  << std::endl;
 
         waterTempCelcius += 1;
-
     }
-
+    
     while(waterTempCelcius == 30)
-
     {
-
         std::cout << "safe water temperature " << waterTempCelcius << " degrees celcius" << std::endl;
 
         return 0;
-
     }
 
     return waterTempCelcius;
@@ -456,87 +293,48 @@ int FishTank::tempAlert()
 }
 
 void FishTank::printTemp()
-
 {
-
     std::cout << waterTempCelcius << " is the current temperature in the Aquarium." << std::endl;
-
 }
-
-
 
 void FishTank::switchLightOn(bool lighting)
-
 {
-
     lightOn = lighting;
 
-
-
     std::cout << "light is on" << std::endl;
-
 }
-
-
 
 void FishTank::switchHeaterOn()
-
 {
-
     if(waterTempCelcius > 25)
-
     {
-
         std::cout << "Marine Aquarium" << std::endl;
-
     }
-
-      
-
+    
     else
-
     {
-
         std::cout << "Tropical Aquarium" << std::endl;
-
     }
-
 }
 
-
-
 void FishTank::feedFish(int aquariumSize)
-
 {
-
     gallons = aquariumSize;
 
-
-
     if(gallons <= 50)
-
     {
-
         std::cout << "feed fish once a week" << std::endl;  
-
     }
 
     if(gallons <= 100 || gallons > 50)
-
     {
-
         std::cout << "feed fish twice a week" << std::endl;
-
     }
 
     else
-
     {
-
         std::cout << "feed fish at least three times a week" << std::endl;
-
     }        
-
 }
 /*
  new UDT 4:
@@ -545,6 +343,7 @@ struct MusicStudio
 {
     MidiKeyboard studioKeyboard;
     Laptop studioLaptop;
+    
     MusicStudio();
     ~MusicStudio()
     {
@@ -562,6 +361,7 @@ struct MusicStudio
 struct StudioLighting
 {
     FishTank studioAquarium;
+    
     StudioLighting();
     ~StudioLighting()
     {
@@ -569,7 +369,6 @@ struct StudioLighting
     }
 
     void ambientLighting();
-    
 };
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
