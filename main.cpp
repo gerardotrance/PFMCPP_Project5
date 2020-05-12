@@ -42,7 +42,6 @@ Purpose:  This project continues developing Project3 and will take you through h
  copied UDT 1:
  */
 struct MidiKeyboard
-
 {
     int keys, pitch, modWheel;
     bool pitchWheel, keyPressed, grand;
@@ -64,7 +63,6 @@ struct MidiKeyboard
 MidiKeyboard::MidiKeyboard(): keys(32),pitch(0), modWheel(1),pitchWheel(true), keyPressed(false), grand(false){} 
 
 int MidiKeyboard::pitchShift()
-
 {
     while(modWheel == 0 )
     {
@@ -141,7 +139,6 @@ void MidiKeyboard::controlMacros(bool macro)
  copied UDT 2:
  */
 struct Laptop
-
 {
     int screenResolution = 4000;
     bool keyboard = true;
@@ -164,7 +161,6 @@ struct Laptop
 };
 
 Laptop::Laptop()
-
 {
     screenResolution = 8000;
     keyboard = true;
@@ -234,7 +230,6 @@ float Laptop::saveData(int storage)
  copied UDT 3:
  */
 struct FishTank
-
 {
     int waterTempCelcius = 25;
     int heightCm = 30;
