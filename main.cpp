@@ -424,4 +424,5 @@ int main()
     MusicStudio studio;
     StudioLighting lighting;
     std::cout << "good to go !" << std::endl;
+    
 }
