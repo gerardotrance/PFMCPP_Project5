@@ -262,7 +262,6 @@ struct FishTank
     void feedFish(int gallons);
     void printTemp();
     int tempAlert();
-
 };
 
 FishTank::FishTank() : waterTempCelcius(24), gallons(75){}
@@ -282,7 +281,7 @@ int FishTank::tempAlert()
 
         return 0;
     }
-
+    
     return waterTempCelcius;
 
 }
@@ -336,23 +335,20 @@ void FishTank::feedFish(int aquariumSize)
  */
 struct MusicStudio
 {
+    MidiKeyboard midiKeyboard;
+     Laptop laptop;
     
-     MidiKeyboard nord;
-     Laptop macbook;
-    
-    MusicStudio();
+    MusicStudio()
+    {
+        std::cout << "MusicStudio Constructor" << std::endl;
+    }
     ~MusicStudio()
     {
         std::cout << "MusicStudio Destructor" << std::endl;
     }
-
-    void setupStudio();
 };
 
-void MusicStudio::setupStudio()
-{
-    std::cout << "Studio ready to Record." << std::endl;
-}
+
 /*
  new UDT 5:
  */
@@ -360,19 +356,15 @@ struct StudioLighting
 {
     FishTank aquarium;
     
-    StudioLighting();
+    StudioLighting()
+    {
+        std::cout << "Studio Lighting Constructor" << std::endl;
+    }
     ~StudioLighting()
     {
         std::cout << "Studio Lighting Destructor" << std::endl;
     }
-
-    void ambientLighting();
 };
-
-void StudioLighting::ambientLighting()
-{
-    std::cout << "Lights on. " << std::endl;
-}
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
 
@@ -390,7 +382,6 @@ void StudioLighting::ambientLighting()
 #include <iostream>
 int main()
 {   
-    
     MidiKeyboard keyboard;
     keyboard.printKeys();
     Laptop myLaptop;
@@ -404,9 +395,7 @@ int main()
     std::cout << fishtemp.waterTempCelcius << std::endl;
     MidiKeyboard pitchMove;
     pitchMove.pitchShift();
-    
     MusicStudio studio;
     StudioLighting lighting;
-
     std::cout << "good to go !" << std::endl;
 }
