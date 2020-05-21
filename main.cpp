@@ -70,6 +70,7 @@ struct MidiKeyboard
 {
     int keys, pitch, modWheel;
     bool pitchWheel, keyPressed, grand;
+    char address;
 
     void playMidiNotes(bool keyPressed);
     void changePitch(bool pitchWheel);
@@ -82,11 +83,11 @@ struct MidiKeyboard
     {
         std::cout << "MidiKeyboard Destructor" << std::endl;
     }
-    
+
     void mkFunc()
     {
         std::cout << this->pitch << " semitones from root note" << std::endl;
-        std::cout << this << " is the value of this" << std::endl;
+        std::cout << this << " is the address of MidiKeyboard" << std::endl;
     }
 };
 
@@ -185,6 +186,7 @@ struct Laptop
     void resDescription()
     {
         std::cout << this->screenResolution << " is the screen resolution of the screen." << std::endl;
+        std::cout << this << " is the address of Laptop " << std::endl;
     }
     void receiveInput(bool keyboard, std::string password, int memoryGb);
     float produceOutput(bool screenResolution, int memoryGb);
@@ -298,7 +300,7 @@ struct FishTank
     void coralLighting()
         {
             std::cout << this->corals << " is the number of corals in the aquarium" << std::endl;
-            std::cout << this << " is the value of this->" << std::endl;
+            std::cout << this << " is the address of FishTank" << std::endl;
         }
 
 };
@@ -422,21 +424,26 @@ struct StudioLighting
 int main()
 {   
 	Example::main();
+  
     MidiKeyboard keyboard;
     keyboard.printKeys();
     //Midikeyboard project 5 part2
     std::cout << keyboard.pitch << " is the pitch" << std::endl;
+    std::cout << &keyboard << " is the address of keyboard object." << std::endl;
     keyboard.mkFunc();
+    
     //
     Laptop myLaptop;
     //Laptop project 5 part2
     std::cout << myLaptop.screenResolution << " is the resolution of the laptop screen." << std::endl;
+    std::cout << &myLaptop << " is the address of the myLaptop object." << std::endl;
     myLaptop.resDescription();
     //
     myLaptop.hardDriveDetails();
     FishTank aquarium;
     //Fishtank project 5 part2
     std::cout << aquarium.corals << "is the number of corals in this aquarium." << std::endl;
+    std::cout << &aquarium << " is the address of the aquarium object." << std::endl;
     aquarium.coralLighting();
     //
     aquarium.printTemp();
