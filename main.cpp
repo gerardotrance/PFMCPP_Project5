@@ -70,6 +70,7 @@ struct MidiKeyboard
 {
     int keys, pitch, modWheel;
     bool pitchWheel, keyPressed, grand;
+    char address;
 
     void playMidiNotes(bool keyPressed);
     void changePitch(bool pitchWheel);
@@ -83,6 +84,11 @@ struct MidiKeyboard
         std::cout << "MidiKeyboard Destructor" << std::endl;
     }
 
+    void mkFunc()
+    {
+        std::cout << this->pitch << " semitones from root note" << std::endl;
+        std::cout << this << " is the address of MidiKeyboard" << std::endl;
+    }
 };
 
 MidiKeyboard::MidiKeyboard(): keys(32),pitch(0), modWheel(1),pitchWheel(true), keyPressed(false), grand(false){} 
@@ -177,7 +183,11 @@ struct Laptop
     {
         std::cout << "Laptop Destructor" << std::endl;
     }
-
+    void resDescription()
+    {
+        std::cout << this->screenResolution << " is the screen resolution of the screen." << std::endl;
+        std::cout << this << " is the address of Laptop " << std::endl;
+    }
     void receiveInput(bool keyboard, std::string password, int memoryGb);
     float produceOutput(bool screenResolution, int memoryGb);
     float saveData(int hardDriveAvailableGb);
@@ -261,6 +271,7 @@ struct FishTank
     int lengthCm = 90;
     int gallons = 50;
     bool lightOn = true;
+    int corals;
 
     FishTank();
     ~FishTank()
@@ -273,7 +284,6 @@ struct FishTank
     {
         bool livePlants = true;
         int numberOfPlants = 6;
-        bool corals = false;
         int numberOfCorals = 0;
         bool rocks = true;
         int numberOfRocks = 5;
@@ -287,9 +297,15 @@ struct FishTank
     void feedFish(int gallons);
     void printTemp();
     int tempAlert();
+    void coralLighting()
+        {
+            std::cout << this->corals << " is the number of corals in the aquarium" << std::endl;
+            std::cout << this << " is the address of FishTank" << std::endl;
+        }
+
 };
 
-FishTank::FishTank() : waterTempCelcius(24), gallons(75){}
+FishTank::FishTank() : waterTempCelcius(24), gallons(75), corals(12){}
 
 int FishTank::tempAlert()
 {
@@ -408,11 +424,28 @@ struct StudioLighting
 int main()
 {   
 	Example::main();
+  
     MidiKeyboard keyboard;
     keyboard.printKeys();
+    //Midikeyboard project 5 part2
+    std::cout << keyboard.pitch << " is the pitch" << std::endl;
+    std::cout << &keyboard << " is the address of keyboard object." << std::endl;
+    keyboard.mkFunc();
+    
+    //
     Laptop myLaptop;
+    //Laptop project 5 part2
+    std::cout << myLaptop.screenResolution << " is the resolution of the laptop screen." << std::endl;
+    std::cout << &myLaptop << " is the address of the myLaptop object." << std::endl;
+    myLaptop.resDescription();
+    //
     myLaptop.hardDriveDetails();
     FishTank aquarium;
+    //Fishtank project 5 part2
+    std::cout << aquarium.corals << "is the number of corals in this aquarium." << std::endl;
+    std::cout << &aquarium << " is the address of the aquarium object." << std::endl;
+    aquarium.coralLighting();
+    //
     aquarium.printTemp();
     std::cout << aquarium.waterTempCelcius << std::endl;
     std::cout << aquarium.gallons << std::endl;
@@ -423,5 +456,8 @@ int main()
     pitchMove.pitchShift();
     MusicStudio studio;
     StudioLighting lighting;
+    FishTank marine;
+    marine.coralLighting();
     std::cout << "good to go !" << std::endl;
+    
 }
