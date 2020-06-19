@@ -153,7 +153,7 @@ void MidiKeyboard::controlMacros(bool macro)
 
 struct MidiKeyboardWrapper
 {
-    MidiKeyboardWrapper(MidiKeyboard* MidiKeyboardPointer) : midiKeyboardptr(MidiKeyboardPointer){}
+    MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer) : midiKeyboardptr(midiKeyboardPointer){}
     ~MidiKeyboardWrapper()
     {
         delete midiKeyboardptr;
@@ -260,7 +260,7 @@ float Laptop::saveData(int storage)
 
 struct LaptopWrapper
 {
-    LaptopWrapper(Laptop* LaptopPointer) : laptopptr(LaptopPointer){}
+    LaptopWrapper(Laptop* laptopPointer) : laptopptr(laptopPointer){}
     ~LaptopWrapper()
     {
         delete laptopptr;
@@ -382,7 +382,7 @@ void FishTank::feedFish(int aquariumSize)
 
 struct FishTankWrapper
 {
-    FishTankWrapper(FishTank* FishTankPointer) : fishTankptr(FishTankPointer){}
+    FishTankWrapper(FishTank* fishTankPointer) : fishTankptr(fishTankPointer){}
     ~FishTankWrapper()
     {
         delete fishTankptr;
@@ -412,7 +412,7 @@ struct MusicStudio
 
 struct MusicStudioWrapper
 {
-    MusicStudioWrapper(MusicStudio* MusicStudioPointer) : musicStudioptr(MusicStudioPointer){}
+    MusicStudioWrapper(MusicStudio* musicStudioPointer) : musicStudioptr(musicStudioPointer){}
     ~MusicStudioWrapper()
     {
         delete musicStudioptr;
@@ -443,7 +443,7 @@ struct StudioLighting
 
 struct StudioLightingWrapper
 {
-    StudioLightingWrapper(StudioLighting* StudioLightingPointer) : studioLightingptr(StudioLightingPointer){}
+    StudioLightingWrapper(StudioLighting* studioLightingPointer) : studioLightingptr(studioLightingPointer){}
     ~StudioLightingWrapper()
     {
         delete studioLightingptr;
