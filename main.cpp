@@ -153,13 +153,13 @@ void MidiKeyboard::controlMacros(bool macro)
 
 struct MidiKeyboardWrapper
 {
-    MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer) : midiKeyboardptr(midiKeyboardPointer){}
+    MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer) : midiKeyboardPtr(midiKeyboardPointer){}
     ~MidiKeyboardWrapper()
     {
-        delete midiKeyboardptr;
+        delete midiKeyboardPtr;
     }
     
-    MidiKeyboard* midiKeyboardptr = nullptr;
+    MidiKeyboard* midiKeyboardPtr = nullptr;
 };
 /*
  copied UDT 2:
@@ -260,13 +260,13 @@ float Laptop::saveData(int storage)
 
 struct LaptopWrapper
 {
-    LaptopWrapper(Laptop* laptopPointer) : laptopptr(laptopPointer){}
+    LaptopWrapper(Laptop* laptopPointer) : laptopPtr(laptopPointer){}
     ~LaptopWrapper()
     {
-        delete laptopptr;
+        delete laptopPtr;
     }
     
-    Laptop* laptopptr = nullptr;
+    Laptop* laptopPtr = nullptr;
 };
 /*
  copied UDT 3:
@@ -382,13 +382,13 @@ void FishTank::feedFish(int aquariumSize)
 
 struct FishTankWrapper
 {
-    FishTankWrapper(FishTank* fishTankPointer) : fishTankptr(fishTankPointer){}
+    FishTankWrapper(FishTank* fishTankPointer) : fishTankPtr(fishTankPointer){}
     ~FishTankWrapper()
     {
-        delete fishTankptr;
+        delete fishTankPtr;
     }
     
-    FishTank* fishTankptr = nullptr;
+    FishTank* fishTankPtr = nullptr;
 };
 /*
  new UDT 4:
@@ -412,13 +412,13 @@ struct MusicStudio
 
 struct MusicStudioWrapper
 {
-    MusicStudioWrapper(MusicStudio* musicStudioPointer) : musicStudioptr(musicStudioPointer){}
+    MusicStudioWrapper(MusicStudio* musicStudioPointer) : musicStudioPtr(musicStudioPointer){}
     ~MusicStudioWrapper()
     {
-        delete musicStudioptr;
+        delete musicStudioPtr;
     }
     
-    MusicStudio* musicStudioptr = nullptr;
+    MusicStudio* musicStudioPtr = nullptr;
 };
 
 
@@ -443,13 +443,13 @@ struct StudioLighting
 
 struct StudioLightingWrapper
 {
-    StudioLightingWrapper(StudioLighting* studioLightingPointer) : studioLightingptr(studioLightingPointer){}
+    StudioLightingWrapper(StudioLighting* studioLightingPointer) : studioLightingPtr(studioLightingPointer){}
     ~StudioLightingWrapper()
     {
-        delete studioLightingptr;
+        delete studioLightingPtr;
     }
     
-    StudioLighting* studioLightingptr = nullptr;
+    StudioLighting* studioLightingPtr = nullptr;
 };
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
@@ -470,41 +470,41 @@ struct StudioLightingWrapper
 int main()
 {   
     MidiKeyboardWrapper keyboardWrapper(new MidiKeyboard);
-    keyboardWrapper.midiKeyboardptr->printKeys();
+    keyboardWrapper.midiKeyboardPtr->printKeys();
     //Midikeyboard project 5 part2
-    std::cout << keyboardWrapper.midiKeyboardptr->pitch << " is the pitch" << std::endl;
+    std::cout << keyboardWrapper.midiKeyboardPtr->pitch << " is the pitch" << std::endl;
     std::cout << &keyboardWrapper << " is the address of keyboard object." << std::endl;
-    keyboardWrapper.midiKeyboardptr->mkFunc();
+    keyboardWrapper.midiKeyboardPtr->mkFunc();
     
     //
     LaptopWrapper myLaptopWrapper(new Laptop);
     //Laptop project 5 part2
-    std::cout << myLaptopWrapper.laptopptr->screenResolution << " is the resolution of the laptop screen." << std::endl;
+    std::cout << myLaptopWrapper.laptopPtr->screenResolution << " is the resolution of the laptop screen." << std::endl;
     std::cout << &myLaptopWrapper << " is the address of the myLaptop object." << std::endl;
-    myLaptopWrapper.laptopptr->resDescription();
+    myLaptopWrapper.laptopPtr->resDescription();
     //
-    myLaptopWrapper.laptopptr->hardDriveDetails();
+    myLaptopWrapper.laptopPtr->hardDriveDetails();
     FishTankWrapper aquariumWrapper(new FishTank);
     //Fishtank project 5 part2
-    std::cout << aquariumWrapper.fishTankptr->corals << "is the number of corals in this aquarium." << std::endl;
+    std::cout << aquariumWrapper.fishTankPtr->corals << "is the number of corals in this aquarium." << std::endl;
     std::cout << &aquariumWrapper << " is the address of the aquarium object." << std::endl;
-    aquariumWrapper.fishTankptr->coralLighting();
+    aquariumWrapper.fishTankPtr->coralLighting();
     //
-    aquariumWrapper.fishTankptr->printTemp();
-    std::cout << aquariumWrapper.fishTankptr->waterTempCelcius << std::endl;
-    std::cout << aquariumWrapper.fishTankptr->gallons << std::endl;
+    aquariumWrapper.fishTankPtr->printTemp();
+    std::cout << aquariumWrapper.fishTankPtr->waterTempCelcius << std::endl;
+    std::cout << aquariumWrapper.fishTankPtr->gallons << std::endl;
     FishTankWrapper fishtemp(new FishTank);
-    fishtemp.fishTankptr->tempAlert();
-    std::cout << fishtemp.fishTankptr->waterTempCelcius << std::endl;
+    fishtemp.fishTankPtr->tempAlert();
+    std::cout << fishtemp.fishTankPtr->waterTempCelcius << std::endl;
     
     MidiKeyboardWrapper pitchMove(new MidiKeyboard);
-    pitchMove.midiKeyboardptr->pitchShift();
+    pitchMove.midiKeyboardPtr->pitchShift();
     
     MusicStudioWrapper studio(new MusicStudio);
     
     StudioLightingWrapper lighting(new StudioLighting);
     FishTankWrapper marine(new FishTank);
-    marine.fishTankptr->coralLighting();
+    marine.fishTankPtr->coralLighting();
     std::cout << "good to go !" << std::endl;
     
 }
