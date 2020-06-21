@@ -44,6 +44,7 @@ You don't have to do this, you can keep your current object name and just change
 
 
 #include<iostream>
+#include "LeakedObjectDetector.h"
 /*
  copied UDT 1:
  */
@@ -70,6 +71,8 @@ struct MidiKeyboard
         std::cout << this->pitch << " semitones from root note" << std::endl;
         std::cout << this << " is the address of MidiKeyboard" << std::endl;
     }
+
+    JUCE_LEAK_DETECTOR(MidiKeyboard)
 };
 
 MidiKeyboard::MidiKeyboard(): keys(32),pitch(0), modWheel(1),pitchWheel(true), keyPressed(false), grand(false){} 
@@ -147,6 +150,17 @@ void MidiKeyboard::controlMacros(bool macro)
     }
 
 }
+
+struct MidiKeyboardWrapper
+{
+    MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer) : midiKeyboardPtr(midiKeyboardPointer){}
+    ~MidiKeyboardWrapper()
+    {
+        delete midiKeyboardPtr;
+    }
+    
+    MidiKeyboard* midiKeyboardPtr = nullptr;
+};
 /*
  copied UDT 2:
  */
@@ -173,7 +187,8 @@ struct Laptop
     float produceOutput(bool screenResolution, int memoryGb);
     float saveData(int hardDriveAvailableGb);
     void hardDriveDetails();
-
+    
+    JUCE_LEAK_DETECTOR(Laptop)
 };
 
 Laptop::Laptop()
@@ -242,6 +257,17 @@ float Laptop::saveData(int storage)
     
     return(hardDriveAvailableGb);
 }
+
+struct LaptopWrapper
+{
+    LaptopWrapper(Laptop* laptopPointer) : laptopPtr(laptopPointer){}
+    ~LaptopWrapper()
+    {
+        delete laptopPtr;
+    }
+    
+    Laptop* laptopPtr = nullptr;
+};
 /*
  copied UDT 3:
  */
@@ -283,7 +309,8 @@ struct FishTank
             std::cout << this->corals << " is the number of corals in the aquarium" << std::endl;
             std::cout << this << " is the address of FishTank" << std::endl;
         }
-
+    
+    JUCE_LEAK_DETECTOR(FishTank)
 };
 
 FishTank::FishTank() : waterTempCelcius(24), gallons(75), corals(12){}
@@ -352,6 +379,17 @@ void FishTank::feedFish(int aquariumSize)
         std::cout << "feed fish at least three times a week" << std::endl;
     }        
 }
+
+struct FishTankWrapper
+{
+    FishTankWrapper(FishTank* fishTankPointer) : fishTankPtr(fishTankPointer){}
+    ~FishTankWrapper()
+    {
+        delete fishTankPtr;
+    }
+    
+    FishTank* fishTankPtr = nullptr;
+};
 /*
  new UDT 4:
  */
@@ -368,6 +406,19 @@ struct MusicStudio
     {
         std::cout << "MusicStudio Destructor" << std::endl;
     }
+
+    JUCE_LEAK_DETECTOR(MusicStudio)
+};
+
+struct MusicStudioWrapper
+{
+    MusicStudioWrapper(MusicStudio* musicStudioPointer) : musicStudioPtr(musicStudioPointer){}
+    ~MusicStudioWrapper()
+    {
+        delete musicStudioPtr;
+    }
+    
+    MusicStudio* musicStudioPtr = nullptr;
 };
 
 
@@ -386,6 +437,19 @@ struct StudioLighting
     {
         std::cout << "Studio Lighting Destructor" << std::endl;
     }
+
+    JUCE_LEAK_DETECTOR(StudioLighting)
+};
+
+struct StudioLightingWrapper
+{
+    StudioLightingWrapper(StudioLighting* studioLightingPointer) : studioLightingPtr(studioLightingPointer){}
+    ~StudioLightingWrapper()
+    {
+        delete studioLightingPtr;
+    }
+    
+    StudioLighting* studioLightingPtr = nullptr;
 };
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
@@ -402,41 +466,45 @@ struct StudioLighting
  */
 
 #include <iostream>
+
 int main()
 {   
-    MidiKeyboard keyboard;
-    keyboard.printKeys();
+    MidiKeyboardWrapper keyboardWrapper(new MidiKeyboard);
+    keyboardWrapper.midiKeyboardPtr->printKeys();
     //Midikeyboard project 5 part2
-    std::cout << keyboard.pitch << " is the pitch" << std::endl;
-    std::cout << &keyboard << " is the address of keyboard object." << std::endl;
-    keyboard.mkFunc();
+    std::cout << keyboardWrapper.midiKeyboardPtr->pitch << " is the pitch" << std::endl;
+    std::cout << &keyboardWrapper << " is the address of keyboard object." << std::endl;
+    keyboardWrapper.midiKeyboardPtr->mkFunc();
     
     //
-    Laptop myLaptop;
+    LaptopWrapper myLaptopWrapper(new Laptop);
     //Laptop project 5 part2
-    std::cout << myLaptop.screenResolution << " is the resolution of the laptop screen." << std::endl;
-    std::cout << &myLaptop << " is the address of the myLaptop object." << std::endl;
-    myLaptop.resDescription();
+    std::cout << myLaptopWrapper.laptopPtr->screenResolution << " is the resolution of the laptop screen." << std::endl;
+    std::cout << &myLaptopWrapper << " is the address of the myLaptop object." << std::endl;
+    myLaptopWrapper.laptopPtr->resDescription();
     //
-    myLaptop.hardDriveDetails();
-    FishTank aquarium;
+    myLaptopWrapper.laptopPtr->hardDriveDetails();
+    FishTankWrapper aquariumWrapper(new FishTank);
     //Fishtank project 5 part2
-    std::cout << aquarium.corals << "is the number of corals in this aquarium." << std::endl;
-    std::cout << &aquarium << " is the address of the aquarium object." << std::endl;
-    aquarium.coralLighting();
+    std::cout << aquariumWrapper.fishTankPtr->corals << "is the number of corals in this aquarium." << std::endl;
+    std::cout << &aquariumWrapper << " is the address of the aquarium object." << std::endl;
+    aquariumWrapper.fishTankPtr->coralLighting();
     //
-    aquarium.printTemp();
-    std::cout << aquarium.waterTempCelcius << std::endl;
-    std::cout << aquarium.gallons << std::endl;
-    FishTank fishtemp;
-    fishtemp.tempAlert();
-    std::cout << fishtemp.waterTempCelcius << std::endl;
-    MidiKeyboard pitchMove;
-    pitchMove.pitchShift();
-    MusicStudio studio;
-    StudioLighting lighting;
-    FishTank marine;
-    marine.coralLighting();
+    aquariumWrapper.fishTankPtr->printTemp();
+    std::cout << aquariumWrapper.fishTankPtr->waterTempCelcius << std::endl;
+    std::cout << aquariumWrapper.fishTankPtr->gallons << std::endl;
+    FishTankWrapper fishtemp(new FishTank);
+    fishtemp.fishTankPtr->tempAlert();
+    std::cout << fishtemp.fishTankPtr->waterTempCelcius << std::endl;
+    
+    MidiKeyboardWrapper pitchMove(new MidiKeyboard);
+    pitchMove.midiKeyboardPtr->pitchShift();
+    
+    MusicStudioWrapper studio(new MusicStudio);
+    
+    StudioLightingWrapper lighting(new StudioLighting);
+    FishTankWrapper marine(new FishTank);
+    marine.fishTankPtr->coralLighting();
     std::cout << "good to go !" << std::endl;
     
 }
