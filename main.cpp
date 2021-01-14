@@ -505,6 +505,6 @@ int main()
     StudioLightingWrapper lighting(new StudioLighting);
     FishTankWrapper marine(new FishTank);
     marine.fishTankPtr->coralLighting();
-    std::cout << "good to go !" << std::endl;
+    std::cout << "good to go!" << std::endl;
     
 }
