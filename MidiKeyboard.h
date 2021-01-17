@@ -1,4 +1,4 @@
-
+#include"Wrappers.h"
 
 struct MidiKeyboard
 {
@@ -11,11 +11,10 @@ struct MidiKeyboard
     void controlMacros(bool modWheel);
     void printKeys();
     int pitchShift();
+    void mkFunc();
 
     MidiKeyboard();
     ~MidiKeyboard(){}
-
-    void mkFunc();
 
     JUCE_LEAK_DETECTOR(MidiKeyboard)
 };

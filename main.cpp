@@ -35,14 +35,7 @@
 
 
 
-#include<iostream>
-#include "LeakedObjectDetector.h"
-#include "Laptop.h"
-#include "FishTank.h"
-#include "MusicStudio.h"
-#include "MidiKeyboard.h"
-#include "StudioLighting.h"
-#include "Wrappers.h"
+
 /*
  copied UDT 1:
  */
@@ -79,7 +72,14 @@
  Wait for my code review.
  */
 
-#include <iostream>
+#include<iostream>
+#include "LeakedObjectDetector.h"
+#include "Laptop.h"
+#include "FishTank.h"
+#include "MusicStudio.h"
+#include "MidiKeyboard.h"
+#include "StudioLighting.h"
+#include "Wrappers.h"
 
 int main()
 {   

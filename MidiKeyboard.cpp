@@ -2,6 +2,7 @@
 #include<iostream>
 #include "Atomic.h"
 #include "LeakedObjectDetector.h"
+#include "Wrappers.h"
 
 MidiKeyboard::MidiKeyboard(): keys(32),pitch(0), modWheel(1),pitchWheel(true), keyPressed(false), grand(false){} 
 

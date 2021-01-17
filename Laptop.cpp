@@ -2,6 +2,7 @@
 #include<iostream>
 #include "Atomic.h"
 #include "LeakedObjectDetector.h"
+#include"Wrappers.h"
 
 
 Laptop::Laptop()
@@ -33,29 +34,6 @@ void Laptop::hardDriveDetails()
 
 }
 
-void Laptop::receiveInput(bool keyboardInput, std::string user, int RAM)
-{
-    keyboard = keyboardInput;
-    password = user;
-    memoryGb = RAM;
-
-    if(password == "password")
-    {
-        std::cout << "welcome user" << std::endl;
-    }
-
-    if(password != "password")
-    {
-        std::cout << "incorrect password" << std::endl;
-    }
-
-    else
-    {
-        std::cout << "enter password" << std::endl;
-    }
-
-}
-
 float Laptop::produceOutput(bool graphics, int RAM)
 {
     screenResolution = graphics;
@@ -73,6 +51,6 @@ float Laptop::saveData(int storage)
 
 void resDescription()
 {
-    std::cout << this->screenResolution << " is the screen resolution of the screen." << std::endl;
-    std::cout << this << " is the address of Laptop " << std::endl;
+    std::cout << Laptop.screenResolution << " is the screen resolution of the screen." << std::endl;
+    std::cout << &Laptop << " is the address of Laptop " << std::endl;
 }

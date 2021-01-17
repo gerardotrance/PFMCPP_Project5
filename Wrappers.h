@@ -1,4 +1,10 @@
-
+#include"FishTank.h"
+#include"Laptop.h"
+#include"MidiKeyboard.h"
+#include"MusicSudio.h"
+#include"StudioLighting.h"
+#include"Atomic.h"
+#include"LeakedObjectDetector.h"
 
 struct MidiKeyboardWrapper
 {
