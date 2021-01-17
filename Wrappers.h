@@ -1,7 +1,7 @@
 #include"FishTank.h"
 #include"Laptop.h"
 #include"MidiKeyboard.h"
-#include"MusicSudio.h"
+#include"MusicStudio.h"
 #include"StudioLighting.h"
 #include"Atomic.h"
 #include"LeakedObjectDetector.h"
