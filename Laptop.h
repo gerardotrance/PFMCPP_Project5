@@ -1,6 +1,4 @@
 
-#pragmaonce
-
 struct Laptop
 {
     int screenResolution = 4000;

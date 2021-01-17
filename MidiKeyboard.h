@@ -1,4 +1,4 @@
-#pragmaonce
+
 
 struct MidiKeyboard
 {

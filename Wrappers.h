@@ -1,5 +1,4 @@
 
-#pragmaonce
 
 struct MidiKeyboardWrapper
 {
