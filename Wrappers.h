@@ -1,4 +1,6 @@
 
+#pragmaonce
+
 struct MidiKeyboardWrapper
 {
     MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer) : midiKeyboardPtr(midiKeyboardPointer){}

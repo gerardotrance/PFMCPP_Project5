@@ -1,16 +1,12 @@
+#pragmaonce
+
 struct MusicStudio
 {
     MidiKeyboard midiKeyboard;
-     Laptop laptop;
+    Laptop laptop;
     
-    MusicStudio()
-    {
-        std::cout << "MusicStudio Constructor" << std::endl;
-    }
-    ~MusicStudio()
-    {
-        std::cout << "MusicStudio Destructor" << std::endl;
-    }
+    MusicStudio(){}
+    ~MusicStudio(){}
 
     JUCE_LEAK_DETECTOR(MusicStudio)
 };

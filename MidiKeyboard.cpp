@@ -1,3 +1,7 @@
+#include "MidiKeyboard.h"
+#include<iostream>
+#include "Atomic.h"
+#include "LeakedObjectDetector.h"
 
 MidiKeyboard::MidiKeyboard(): keys(32),pitch(0), modWheel(1),pitchWheel(true), keyPressed(false), grand(false){} 
 
@@ -72,5 +76,13 @@ void MidiKeyboard::controlMacros(bool macro)
     {
         std::cout << "no mod wheel" << std::endl;
     }
+
+}
+
+void MidiKeyboard::mkFunc()
+{
+    std::cout << this->pitch << " semitones from root note" << std::endl;
+    std::cout << this << " is the address of MidiKeyboard" << std::endl;
+}
 
 }
