@@ -8,55 +8,30 @@
 
 struct MidiKeyboardWrapper
 {
-    MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer) : midiKeyboardPtr(midiKeyboardPointer){}
-    ~MidiKeyboardWrapper()
-    {
-        delete midiKeyboardPtr;
-    }
-    
-    MidiKeyboard* midiKeyboardPtr = nullptr;
+    MidiKeyboardWrapper(){}
+    ~MidiKeyboardWrapper{}
 };
 
 struct LaptopWrapper
 {
-    LaptopWrapper(Laptop* laptopPointer) : laptopPtr(laptopPointer){}
-    ~LaptopWrapper()
-    {
-        delete laptopPtr;
-    }
-    
-    Laptop* laptopPtr = nullptr;
+    LaptopWrapper(){}
+    ~LaptopWrapper(){}
 };
 
 struct FishTankWrapper
 {
-    FishTankWrapper(FishTank* fishTankPointer) : fishTankPtr(fishTankPointer){}
-    ~FishTankWrapper()
-    {
-        delete fishTankPtr;
-    }
-    
-    FishTank* fishTankPtr = nullptr;
+    FishTankWrapper(){}
+    ~FishTankWrapper(){}
 };
 
 struct MusicStudioWrapper
 {
-    MusicStudioWrapper(MusicStudio* musicStudioPointer) : musicStudioPtr(musicStudioPointer){}
-    ~MusicStudioWrapper()
-    {
-        delete musicStudioPtr;
-    }
-    
-    MusicStudio* musicStudioPtr = nullptr;
+    MusicStudioWrapper(){}
+    ~MusicStudioWrapper(){}
 };
 
 struct StudioLightingWrapper
 {
-    StudioLightingWrapper(StudioLighting* studioLightingPointer) : studioLightingPtr(studioLightingPointer){}
-    ~StudioLightingWrapper()
-    {
-        delete studioLightingPtr;
-    }
-    
-    StudioLighting* studioLightingPtr = nullptr;
+    StudioLightingWrapper(){}
+    ~StudioLightingWrapper(){}
 };
