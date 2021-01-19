@@ -73,7 +73,7 @@
  */
 
 #include<iostream>
-#include "LeakedObjectDetector.h"
+//#include "LeakedObjectDetector.h"
 #include "Laptop.h"
 #include "FishTank.h"
 #include "MusicStudio.h"
@@ -92,18 +92,18 @@ int main()
     
     //
     LaptopWrapper myLaptopWrapper(new Laptop);
-    //Laptop project 5 part2
+    // //Laptop project 5 part2
     std::cout << myLaptopWrapper.laptopPtr->screenResolution << " is the resolution of the laptop screen." << std::endl;
     std::cout << &myLaptopWrapper << " is the address of the myLaptop object." << std::endl;
     myLaptopWrapper.laptopPtr->resDescription();
-    //
+    // //
     myLaptopWrapper.laptopPtr->hardDriveDetails();
     FishTankWrapper aquariumWrapper(new FishTank);
-    //Fishtank project 5 part2
+    // //Fishtank project 5 part2
     std::cout << aquariumWrapper.fishTankPtr->corals << "is the number of corals in this aquarium." << std::endl;
     std::cout << &aquariumWrapper << " is the address of the aquarium object." << std::endl;
     aquariumWrapper.fishTankPtr->coralLighting();
-    //
+    // //
     aquariumWrapper.fishTankPtr->printTemp();
     std::cout << aquariumWrapper.fishTankPtr->waterTempCelcius << std::endl;
     std::cout << aquariumWrapper.fishTankPtr->gallons << std::endl;
