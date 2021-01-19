@@ -1,8 +1,6 @@
 #include "Laptop.h"
 #include<iostream>
-#include "Atomic.h"
-#include "LeakedObjectDetector.h"
-#include"Wrappers.h"
+
 
 
 Laptop::Laptop()
@@ -49,8 +47,8 @@ float Laptop::saveData(int storage)
     return(hardDriveAvailableGb);
 }
 
-void resDescription()
+void Laptop::resDescription()
 {
-    std::cout << Laptop.screenResolution << " is the screen resolution of the screen." << std::endl;
-    std::cout << &Laptop << " is the address of Laptop " << std::endl;
+    std::cout << screenResolution << " is the screen resolution of the screen." << std::endl;
+    std::cout << this << " is the address of Laptop " << std::endl;
 }

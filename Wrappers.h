@@ -1,37 +1,50 @@
-#include"FishTank.h"
-#include"Laptop.h"
-#include"MidiKeyboard.h"
-#include"MusicStudio.h"
-#include"StudioLighting.h"
-#include"Atomic.h"
-#include"LeakedObjectDetector.h"
+#include "MidiKeyboard.h"
+#include "Laptop.h"
+#include "FishTank.h"
+#include "MusicStudio.h"
+#include "StudioLighting.h"
+struct MidiKeyboard;
+struct Laptop;
+struct FishTank;
+struct MusicStudio;
+struct StudioLighting;
 
 struct MidiKeyboardWrapper
 {
-    MidiKeyboardWrapper(){}
-    ~MidiKeyboardWrapper{}
+    MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer);
+    ~MidiKeyboardWrapper();
+    
+    MidiKeyboard* midiKeyboardPtr = nullptr;
 };
 
 struct LaptopWrapper
 {
-    LaptopWrapper(){}
-    ~LaptopWrapper(){}
+    LaptopWrapper(Laptop* laptopPointer);
+    ~LaptopWrapper();
+
+    Laptop* laptopPtr = nullptr;
 };
 
 struct FishTankWrapper
 {
-    FishTankWrapper(){}
-    ~FishTankWrapper(){}
+    FishTankWrapper(FishTank* fishTankPointer);
+    ~FishTankWrapper();
+
+    FishTank* fishTankPtr = nullptr;
 };
 
 struct MusicStudioWrapper
 {
-    MusicStudioWrapper(){}
-    ~MusicStudioWrapper(){}
+    MusicStudioWrapper(MusicStudio* musicStudioPointer);
+    ~MusicStudioWrapper();
+
+    MusicStudio* musicStudioPtr = nullptr;
 };
 
 struct StudioLightingWrapper
 {
-    StudioLightingWrapper(){}
-    ~StudioLightingWrapper(){}
+    StudioLightingWrapper(StudioLighting* studioLightingPointer);
+    ~StudioLightingWrapper();
+
+    StudioLighting* studioLightingPtr = nullptr;
 };

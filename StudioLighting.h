@@ -1,11 +1,10 @@
-#include"Wrappers.h"
+#include "LeakedObjectDetector.h"
 
 struct StudioLighting
 {
-    FishTank aquarium;
     
-    StudioLighting(){}
-    ~StudioLighting(){}
+    StudioLighting();
+    ~StudioLighting();
 
     JUCE_LEAK_DETECTOR(StudioLighting)
 };

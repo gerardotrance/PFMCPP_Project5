@@ -1,4 +1,4 @@
-#include"Wrappers.h"
+#include "LeakedObjectDetector.h"
 
 
 struct FishTank
@@ -34,5 +34,5 @@ struct FishTank
     int tempAlert();
     void coralLighting();
     
-    JUCE_LEAK_DETECTOR(FishTank)
+    JUCE_LEAK_DETECTOR(FishTank) 
 };

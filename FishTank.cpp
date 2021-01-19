@@ -1,9 +1,6 @@
 
 #include<iostream>
 #include"FishTank.h"
-#include "Atomic.h"
-#include "LeakedObjectDetector.h"
-#include "Wrappers.h"
 
 
 FishTank::FishTank() : waterTempCelcius(24), gallons(75), corals(12){}

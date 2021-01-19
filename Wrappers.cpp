@@ -1,18 +1,22 @@
 #include "Wrappers.h"
+struct MidiKeyboard;
+struct Laptop;
+struct FishTank;
+struct MusicStudio;
+struct StudioLighting;
 
-MidiKeyboardWrapper::MidiKeyboardWrapper
+
+MidiKeyboardWrapper::MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer)
 {
-    MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer)  : midiKeyboardPtr(midiKeyboardPointer){}
+    MidiKeyboardWrapper(MidiKeyboard* midiKeyboardPointer) : midiKeyboardPtr(midiKeyboardPointer){}
     ~MidiKeyboardWrapper()
     {
         delete midiKeyboardPtr;
     }
-    
-    MidiKeyboard* midiKeyboardPtr = nullptr;
 
 }
 
-LaptopWrapper::LaptopWrapper
+LaptopWrapper::LaptopWrapper(Laptop* laptopPointer)
 {
     LaptopWrapper(Laptop* laptopPointer) : laptopPtr(laptopPointer){}
     ~LaptopWrapper()
@@ -20,10 +24,9 @@ LaptopWrapper::LaptopWrapper
         delete laptopPtr;
     }
     
-    Laptop* laptopPtr = nullptr;
 }
 
-FishTankWrapper::FishTankWrapper
+FishTankWrapper::FishTankWrapper(FishTank* fishTankPointer)
 {
     FishTankWrapper(FishTank* fishTankPointer) : fishTankPtr(fishTankPointer){}
     ~FishTankWrapper()
@@ -31,10 +34,9 @@ FishTankWrapper::FishTankWrapper
         delete fishTankPtr;
     }
     
-    FishTank* fishTankPtr = nullptr;
 }
 
-MusicStudioWrapper::MusicStudioWrapper
+MusicStudioWrapper::MusicStudioWrapper(MusicStudio* musicStudioPointer)
 {
     MusicStudioWrapper(MusicStudio* musicStudioPointer) : musicStudioPtr(musicStudioPointer){}
     ~MusicStudioWrapper()
@@ -42,10 +44,9 @@ MusicStudioWrapper::MusicStudioWrapper
         delete musicStudioPtr;
     }
     
-    MusicStudio* musicStudioPtr = nullptr;
 }
 
-StudioLightingWrapper::StudioLightingWrapper
+StudioLightingWrapper::StudioLightingWrapper(StudioLighting* studioLightingPointer)
 {
     StudioLightingWrapper(StudioLighting* studioLightingPointer) : studioLightingPtr(studioLightingPointer){}
     ~StudioLightingWrapper()
@@ -53,5 +54,4 @@ StudioLightingWrapper::StudioLightingWrapper
         delete studioLightingPtr;
     }
     
-    StudioLighting* studioLightingPtr = nullptr;
 }

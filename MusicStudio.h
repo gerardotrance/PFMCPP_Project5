@@ -1,13 +1,11 @@
-#include "MidiKeyboard.h"
-#include"Wrappers.h"
+#include "LeakedObjectDetector.h"
+
 
 struct MusicStudio
 {
-    MidiKeyboard midiKeyboard;
-    Laptop laptop;
     
-    MusicStudio(){}
-    ~MusicStudio(){}
+    MusicStudio();
+    ~MusicStudio();
 
     JUCE_LEAK_DETECTOR(MusicStudio)
 };

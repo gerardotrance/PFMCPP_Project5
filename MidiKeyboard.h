@@ -1,4 +1,4 @@
-#include"Wrappers.h"
+#include"LeakedObjectDetector.h"
 
 struct MidiKeyboard
 {
@@ -14,7 +14,7 @@ struct MidiKeyboard
     void mkFunc();
 
     MidiKeyboard();
-    ~MidiKeyboard(){}
+    ~MidiKeyboard();
 
     JUCE_LEAK_DETECTOR(MidiKeyboard)
 };
