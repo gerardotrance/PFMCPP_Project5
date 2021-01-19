@@ -1,7 +1,18 @@
 #include "MidiKeyboard.h"
 #include<iostream>
 
-MidiKeyboard::MidiKeyboard(): keys(32),pitch(0), modWheel(1),pitchWheel(true), keyPressed(false), grand(false){} 
+MidiKeyboard::MidiKeyboard()
+{ 
+    keys=30;
+    pitch = 0; 
+    modWheel= 12;
+    pitchWheel = true; 
+    keyPressed = false; 
+    grand = false;
+}
+
+//MidiKeyboard~MidiKeyboard(){}
+
 
 int MidiKeyboard::pitchShift()
 {

@@ -69,3 +69,10 @@ void FishTank::feedFish(int aquariumSize)
         std::cout << "feed fish at least three times a week" << std::endl;
     }        
 }
+
+void FishTank::coralLighting()
+{
+    std::cout << this->corals << " is the number of corals in the aquarium" << std::endl;
+    std::cout << this << " is the address of FishTank" << std::endl;
+}
+
