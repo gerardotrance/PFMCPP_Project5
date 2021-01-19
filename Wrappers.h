@@ -1,13 +1,12 @@
-#include "MidiKeyboard.h"
-#include "Laptop.h"
-#include "FishTank.h"
-#include "MusicStudio.h"
-#include "StudioLighting.h"
+
+#pragma once
+
 struct MidiKeyboard;
 struct Laptop;
 struct FishTank;
 struct MusicStudio;
 struct StudioLighting;
+
 
 struct MidiKeyboardWrapper
 {

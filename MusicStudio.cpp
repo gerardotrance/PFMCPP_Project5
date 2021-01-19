@@ -2,8 +2,9 @@
 #include "MidiKeyboard.h"
 #include "Laptop.h"
 
-MusicStudio::MusicStudio()
+MusicStudio::MusicStudio() 
 {
-    MidiKeyboard midiKeyboard;
-    Laptop laptop;
+MidiKeyboard midiKeyboard; FIXME these were member variables before
+    Laptop laptop; FIXME now they are local variables in your constructor
+    FIXME make them member variables again.
 }
