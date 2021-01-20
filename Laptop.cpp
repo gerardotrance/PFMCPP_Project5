@@ -13,6 +13,8 @@ Laptop::Laptop()
     memoryGb = 16;    
 }
 
+Laptop::~Laptop(){}
+
 void Laptop::hardDriveDetails()
 {
     std::cout << hardDriveAvailableGb << " Giga Bytes HD storage." << std::endl;

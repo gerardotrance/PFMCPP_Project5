@@ -5,6 +5,8 @@
 
 FishTank::FishTank() : waterTempCelcius(24), gallons(75), corals(12){}
 
+FishTank::~FishTank(){}
+
 int FishTank::tempAlert()
 {
     while(waterTempCelcius < 30)

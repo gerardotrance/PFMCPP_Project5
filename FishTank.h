@@ -13,7 +13,7 @@ struct FishTank
     int corals;
 
     FishTank();
-    ~FishTank(){}
+    ~FishTank();
 
 
     struct Decor

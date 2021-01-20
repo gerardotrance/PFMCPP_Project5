@@ -5,10 +5,10 @@
 
 MusicStudio::MusicStudio() 
 {
-        std::cout << "MusicStudio Constructor" << std::endl;
+    std::cout << "MusicStudio Constructor" << std::endl;
 }
 MusicStudio::~MusicStudio()
 {
-        std::cout << "MusicStudio Destructor" << std::endl;
+    std::cout << "MusicStudio Destructor" << std::endl;
 }
 

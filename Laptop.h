@@ -13,7 +13,7 @@ struct Laptop
     
 
     Laptop();
-    ~Laptop(){}
+    ~Laptop();
     
     void resDescription();
     float produceOutput(bool screenResolution, int memoryGb);

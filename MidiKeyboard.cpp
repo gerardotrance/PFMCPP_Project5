@@ -11,7 +11,7 @@ MidiKeyboard::MidiKeyboard()
     grand = false;
 }
 
-//MidiKeyboard~MidiKeyboard(){}
+MidiKeyboard::~MidiKeyboard(){}
 
 
 int MidiKeyboard::pitchShift()
